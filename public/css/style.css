@@ -1,0 +1,256 @@
+/* Navbar */
+.nav-custom{
+    background-color: rgba(0, 0, 0, 0.295);
+}
+.nav-custom a{
+    color: white !important;
+}
+.navbar-nav a{
+    font-weight: bold;
+}
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+.navbar-toggler{
+    border: unset;
+}
+
+/* None */
+.desktop-none{
+    display: none;
+}
+
+/* Universal */
+.btn-edens{
+    padding: 6px 12px;
+    border-radius: 8px;
+    background-color: #F1C944CC;
+    color: white;
+}
+.btn-edens:hover{
+    background-color: #806718cc;
+}
+
+/* Section 1 - Home */
+/* Background */
+#bg-section-1 {
+    height: 100vh;
+    width: 100%;
+    background-image: url(../img/background.png);
+    background-size: cover;
+  }
+
+/* Carousel */
+.carousel-indicators li{
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: white;
+}
+.carousel-indicators .active{
+    background-color: black;
+}
+.box-section1{
+    width: max-content;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.616);
+    border-radius: 12px;
+    color: white;
+}
+.wt-section1{
+    width: 550px;
+}
+/* End Section 1 */
+
+/* Section 2 - Home */
+/* Background */
+#bg-section-2 {
+    height: 100vh;
+    width: 100%;
+    background-image: url(../img/bg-section-2.png);
+    background-size: cover;
+  }
+
+  .box-section2{
+    width: 100%;
+    padding: 100px 20px;
+    background-color: rgba(0, 0, 0, 0.616);
+    border-radius: 12px;
+    color: white;
+}
+/* End Section 2 */
+
+/* Section 3 - Home */
+/* Background */
+    #section-3 {
+    padding: 100px 0px;
+    background-color: black;
+    color: white;
+  }
+  .card-section{
+    display: flex;
+    align-items: center;
+    color: white;
+    height: 301px;
+    background-repeat: no-repeat;
+  }
+  .card-section img{
+    opacity: 0.8;
+  }
+  .absolute-center{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+  }
+/* End Section 3 */
+
+/* Section 4 - Home */
+/* Background */
+#section-4{
+    padding: 100px 0px;
+    background-color: black;
+    color: white;
+}
+/* Splide Sec 4 */
+.splide__pagination__page.is-active{
+    transform: unset;
+}
+.splide__pagination__page{
+    height: 30px;
+    width: 8px;
+    border-radius: 8px;
+}
+/* End Section 4 */
+
+/* Section 5 - Home */
+/* Background */
+#section-5{
+    padding: 100px 0px;
+    background-color: black;
+    color: white;
+}
+/* End Section 5 */
+
+/* Section 6 - Home */
+/* Background */
+#section-6{
+    padding: 100px 0px;
+    background-color: black;
+    color: white;
+}
+.card-head-section6{
+    background-color: #F2F5F7;
+    padding: 60px;
+}
+.card-section6{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    justify-content: center;
+}
+/* End Section 5 */
+
+/* Ex Style */
+.gap-1{
+    gap: 14px;
+}
+.gap-2{
+    gap: 50px;
+}
+.d-flex-none{
+    display: flex;
+}
+
+/* Footer */
+.page-footer{
+    background-color: black;
+    color: white;
+}
+.page-footer a{
+    color: white;
+}
+.box-social a{
+    padding: 6px 12px;
+    background-color: black;
+    border-radius: 50%;
+}
+.box-social{
+    background-color: white;
+    padding: 6px 24px;
+    border-radius: 4px;
+    width: max-content;
+}
+/* Tablet */
+@media (max-width: 992px) {
+    .desktop-none{
+        display: block;
+    }
+    .box-section1{
+        width: 100%;
+    }
+    .wt-section1{
+        width: 100%;
+    }
+    .d-flex-none{
+        display: block !important;
+    }
+    .text-center-mobile{
+        text-align: center;
+    }
+    .gap-2{
+        gap: 0px;
+    }
+    .nav-custom{
+        background-color: black;
+    }
+    .splide__pagination{
+        bottom: unset;
+    }
+    .splide__pagination__page{
+        height: 8px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 482px) {
+    .card-section{
+        height: max-content;
+    }
+}
+
+
+/* Container XL */
+@media (min-width: 576px){
+    .container-xl {
+        max-width: 540px;
+    }
+    }
+  
+    @media (min-width: 768px){
+        .container-xl {
+            max-width: 720px;
+        }
+        }
+    
+  
+  @media (min-width: 992px){
+  .container-xl {
+    max-width: 960px;
+  }
+  }
+  
+  @media (min-width: 1200px){
+    .container-xl {
+        max-width: 1440px;
+        }
+    }
+  
+  .container-xl {
+    width: 100%;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
