@@ -60,8 +60,44 @@ class GeneralContentController extends Controller
                     $location = 'img';
                     $filename = $file->getClientOriginalName();
                     $file->move($location, $filename);
-                    $url_file_name = $URL . $location . '/' .  $filename;
+                    $url_file_name = $URL . '/' . $location . '/' .  $filename;
                     $string = $string . 'logo_img' . "='" . $url_file_name . "',";
+                };
+                if ($request->hasFile('image1')) {
+                    $file = $request->file('image1');
+                    unset($allData['image1']);
+                    $location = 'img';
+                    $filename = $file->getClientOriginalName();
+                    $file->move($location, $filename);
+                    $url_file_name = $URL . '/' . $location . '/' .  $filename;
+                    $string = $string . 'image1' . "='" . $url_file_name . "',";
+                };
+                if ($request->hasFile('image2')) {
+                    $file = $request->file('image2');
+                    unset($allData['image2']);
+                    $location = 'img';
+                    $filename = $file->getClientOriginalName();
+                    $file->move($location, $filename);
+                    $url_file_name = $URL . '/' . $location . '/' .  $filename;
+                    $string = $string . 'image2' . "='" . $url_file_name . "',";
+                };
+                if ($request->hasFile('image3')) {
+                    $file = $request->file('image3');
+                    unset($allData['image3']);
+                    $location = 'img';
+                    $filename = $file->getClientOriginalName();
+                    $file->move($location, $filename);
+                    $url_file_name = $URL . '/' . $location . '/' .  $filename;
+                    $string = $string . 'image3' . "='" . $url_file_name . "',";
+                };
+                if ($request->hasFile('image4')) {
+                    $file = $request->file('image4');
+                    unset($allData['image4']);
+                    $location = 'img';
+                    $filename = $file->getClientOriginalName();
+                    $file->move($location, $filename);
+                    $url_file_name = $URL . '/' . $location . '/' .  $filename;
+                    $string = $string . 'image4' . "='" . $url_file_name . "',";
                 };
                 foreach ($allData as $key => $value) {
                     $string = $string . $key . "='" . $value . "',";
