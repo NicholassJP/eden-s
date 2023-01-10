@@ -131,6 +131,50 @@
     background-color: black;
     color: white;
 }
+.card-section5 {
+  background-image: url("/img/human.png");
+  object-fit: cover;
+  align-items: center;
+  display: flex;
+  width: 300px;
+  height: 380px;
+  justify-content: center;
+  background-repeat: no-repeat;
+  margin-left: 75px;
+}
+.text-card {
+    width: 280px;
+    height: max-content;
+    color: black;
+    background-color: white;
+    transform: translate(16rem);
+    padding: 3rem 2rem;
+  }
+@media (max-width: 1320px) {
+    .card-section5{
+        margin-left: 0;
+    }
+}
+@media (max-width: 1200px) {
+    .card-section5{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .text-card{
+        opacity: 0;
+        background: rgba(255, 255, 255, 0.8);
+        transform: translate(0);
+        transition: all 0.3s ease;
+    }
+    .text-card:hover{
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.8);
+        transform: translate(0);
+    }
+}
+.title-color{
+    color: #C39296;
+}
 /* End Section 5 */
 
 /* Section 6 - Home */
@@ -150,7 +194,7 @@
     background-color: white;
     justify-content: center;
 }
-/* End Section 5 */
+/* End Section 6 */
 
 /* Ex Style */
 .gap-1{

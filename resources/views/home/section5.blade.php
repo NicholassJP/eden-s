@@ -4,21 +4,53 @@
             <h1>Our People</h1>
         </div>
         <div class="row">
-            <div class="col-xl-3 text-center">
-                <img src="/img/human.png">
-                <p class="mt-3">Antony as CEO</p>
+            <div class="col-xl-6 text-center mb-4">
+                <div class="card-section5">
+                    <div class="text-card">
+                        <h4>JEFFEREY BROWN</h4>
+                        <h5 class="title-color">Creative Leader</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                            consequatur ad consectetur dignissimos exercitationem?
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="col-xl-3 text-center">
-                <img src="/img/human.png">
-                <p class="mt-3">Jeremy, as CTO</p>
+            <div class="col-xl-6 text-center mb-4">
+                  <div class="card-section5">
+                    <div class="text-card">
+                        <h4>JEFFEREY BROWN</h4>
+                        <h5 class="title-color">Creative Leader</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                            consequatur ad consectetur dignissimos exercitationem?
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="col-xl-3 text-center">
-                <img src="/img/human.png">
-                <p class="mt-3">Aaron, as CSO</p>
+            <div class="col-xl-6 text-center mb-4">
+                  <div class="card-section5">
+                    <div class="text-card">
+                        <h4>JEFFEREY BROWN</h4>
+                        <h5 class="title-color">Creative Leader</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                            consequatur ad consectetur dignissimos exercitationem?
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="col-xl-3 text-center">
-                <img src="/img/human.png">
-                <p class="mt-3">Aaron, as CSO</p>
+            <div class="col-xl-6 text-center mb-4">
+                  <div class="card-section5">
+                    <div class="text-card">
+                        <h4>JEFFEREY BROWN</h4>
+                        <h5 class="title-color">Creative Leader</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+                            consequatur ad consectetur dignissimos exercitationem?
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
