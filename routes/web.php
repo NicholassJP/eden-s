@@ -15,3 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [TampilanController::class, 'index']);
+Route::get('/service_product', [TampilanController::class, 'service_product']);
+Route::get('/news', [TampilanController::class, 'news']);
+Route::get('/contactus', [TampilanController::class, 'contactus']);
+

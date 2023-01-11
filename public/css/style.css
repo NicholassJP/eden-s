@@ -31,6 +31,51 @@
     background-color: #806718cc;
 }
 
+.btn-submit{
+    padding: 6px 12px;
+    border-radius: 0;
+    background-color: #F3C300;
+    color: white;
+}
+
+.btn-submit:hover{
+    background-color: #a78602;
+}
+
+.fz-20px{
+    font-size: 20px;
+}
+
+.active-{
+  background: linear-gradient(90deg, rgba(243,126,0,1) 0%, rgba(243,195,0,1) 55%, rgba(243,224,0,1) 100%) !important;
+  width: 25px !important;
+  border-radius: 6px !important;
+}
+.current-page{
+  position: relative;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  cursor: pointer;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgb(218, 218, 218);
+  transition: 0.3s ease width;
+}
+.fa-arrow-left{
+  color: rgb(218, 218, 218);
+  font-size: 24px;
+}
+.fa-arrow-right{
+    color: rgb(218, 218, 218);
+  font-size: 24px;
+}
+
+.mt-3px{
+    margin-top: 3px;
+}
+
 /* Section 1 - Home */
 /* Background */
 #bg-section-1 {
@@ -38,6 +83,7 @@
     width: 100%;
     background-image: url(../img/background.png);
     background-size: cover;
+    background-color: black;
   }
 
 /* Carousel */
@@ -64,6 +110,10 @@
 
 /* Section 2 - Home */
 /* Background */
+#section-2{
+    padding-top: 50px;
+    background-color: black;
+}
 #bg-section-2 {
     height: 100vh;
     width: 100%;
@@ -83,17 +133,31 @@
 /* Section 3 - Home */
 /* Background */
     #section-3 {
-    padding: 100px 0px;
+    padding: 50px 0px;
     background-color: black;
     color: white;
   }
   .card-section{
     display: flex;
     align-items: center;
-    color: white;
-    height: 301px;
-    background-repeat: no-repeat;
   }
+  .card-section:hover{
+    cursor: pointer;
+  }
+  .wrapper-img1{
+    border-radius: 12px;
+    width: 100%;
+    overflow: hidden;
+    }
+    .expertise-img{
+        object-fit: cover;
+        width: 100%;
+        height: 300px;
+        transition: 0.3s;
+    }
+    .expertise-img:hover {
+        transform: scale(1.1);
+    }
   .card-section img{
     opacity: 0.8;
   }
@@ -109,7 +173,7 @@
 /* Section 4 - Home */
 /* Background */
 #section-4{
-    padding: 100px 0px;
+    padding: 50px 0px;
     background-color: black;
     color: white;
 }
@@ -127,7 +191,7 @@
 /* Section 5 - Home */
 /* Background */
 #section-5{
-    padding: 100px 0px;
+    padding: 50px 0px;
     background-color: black;
     color: white;
 }
@@ -180,7 +244,7 @@
 /* Section 6 - Home */
 /* Background */
 #section-6{
-    padding: 100px 0px;
+    padding: 50px 0px;
     background-color: black;
     color: white;
 }
@@ -216,9 +280,15 @@
     color: white;
 }
 .box-social a{
-    padding: 6px 12px;
+    padding: 4px 8px;
     background-color: black;
     border-radius: 50%;
+}
+.box-social .loc{
+    padding: 4px 10px;
+}
+.box-social .ytb{
+    padding: 4px 7px;
 }
 .box-social{
     background-color: white;
@@ -226,10 +296,143 @@
     border-radius: 4px;
     width: max-content;
 }
+.medsos-ig{
+    margin-top: 2px;
+}
+.medsos-ig i{
+    font-size: 22px;
+}
+.medsos-loc{
+    margin-top: 2px;
+}
+.medsos-loc i{
+    font-size: 20px;
+}
+.medsos-twit{
+    margin-top: 2px;
+}
+.medsos-twit i{
+    font-size: 20px;
+}
+.medsos-ytb{
+    margin-top: 2px;
+}
+.medsos-ytb i{
+    font-size: 18px;
+}
+
+/* Service & Product */
+/* Section 1 */
+#ser-section-1{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.nav-pills .nav-link{
+    color: black;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background-color: #F8F8F8;
+    color: black;
+    border: 1px solid black;
+    border-radius: 0;
+}
+
+.ser-card-section1{
+    background-color: #F6F6F6;
+    padding: 2rem;
+}
+.ser-card-section1 img{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* Section 2 */
+#ser-section-2{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* Contact US */
+/* Section 1 */
+#cont-section-1{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+#cont-section-1 img{
+    width: 60px;
+    filter: invert(72%) sepia(62%) saturate(2242%) hue-rotate(7deg) brightness(100%) contrast(108%);
+}
+.br1{
+    border-right: 0.5px dashed #F3C300;
+}
+.br2{
+    border: 1px solid #F3C300;
+    width: 60px;
+}
+.color-secondary{
+    color: #888897;
+}
+
+/* Section 2 */
+#cont-section-2{
+    padding-bottom: 50px;
+}
+
+.google-maps{
+    width: 100%;
+    height: 100%;
+}
+
+/* News */
+/* Section 1 */
+#news-section-1{
+    color: white;
+    padding: 20px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("/img/news/news1.jpg");
+    background-size: cover;
+    width: 100%;
+}
+.nav-news .nav-link.active, .nav-news .show>.nav-link
+{
+    padding: 6px 24px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, rgba(243,126,0,1) 0%, rgba(243,195,0,1) 55%, rgba(243,224,0,1) 100%);
+    border: 0;
+    color: white;
+}
+
+.nav-news .nav-link{
+    padding: 4px 24px;
+    color: white;
+    border-radius: 20px;
+    border: 1px solid white;
+}
+
+.wrapper-img{
+    overflow: hidden;
+}
+.news-img{
+    object-fit: cover;
+    width: 100%;
+    height: 220px;
+    transition: 0.3s;
+}
+.news-img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
 /* Tablet */
 @media (max-width: 992px) {
     .desktop-none{
         display: block;
+    }
+    .google-maps{
+        height: 400px;
     }
     .box-section1{
         width: 100%;
@@ -297,4 +500,8 @@
     padding-left: 15px !important;
     margin-right: auto !important;
     margin-left: auto !important;
+  }
+
+  .bold{
+    font-weight: bold;
   }

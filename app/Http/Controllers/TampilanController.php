@@ -12,4 +12,16 @@ class TampilanController extends Controller
     {
         return view('index', ['title' => 'index']);
     }
+    public function service_product()
+    {
+        return view('service_product', ['title' => 'service_product']);
+    }
+    public function news()
+    {
+        return view('news', ['title' => 'news']);
+    }
+    public function contactus()
+    {
+        return view('contactus', ['title' => 'contactus']);
+    }
 }
