@@ -17,7 +17,13 @@ class GeneralContentController extends Controller
             ]);
             $tipe = request('tipe');
             if ($tipe == 'nav') {
-                $getData = DB::select("SELECT * FROM `nav_content`");
+                $getData = DB::select("SELECT * FROM `content_nav`");
+            } else if ($tipe == 'home') {
+                $getData = DB::select("SELECT * FROM `content_home`");
+            } else if ($tipe == 'service') {
+                $getData = DB::select("SELECT * FROM `content_service_and_product`");
+            } else if ($tipe == 'contact') {
+                $getData = DB::select("SELECT * FROM `content_contact_us`");
             }
 
             $data = json_decode(json_encode($getData), true);
@@ -103,7 +109,46 @@ class GeneralContentController extends Controller
                     $string = $string . $key . "='" . $value . "',";
                 }
                 $string = substr_replace($string, "", -1);
-                DB::select("UPDATE `nav_content` set " . $string);
+                DB::select("UPDATE `content_nav` set " . $string);
+            } else if ($tipe == 'home') {
+                $string = '';
+                if ($request->hasFile('section2_logo')) {
+                    $file = $request->file('section2_logo');
+                    unset($allData['section2_logo']);
+                    $location = 'img';
+                    $filename = $file->getClientOriginalName();
+                    $file->move($location, $filename);
+                    $url_file_name = $URL . '/' . $location . '/' .  $filename;
+                    $string = $string . 'section2_logo' . "='" . $url_file_name . "',";
+                };
+                foreach ($allData as $key => $value) {
+                    $string = $string . $key . "='" . $value . "',";
+                }
+                $string = substr_replace($string, "", -1);
+                DB::select("UPDATE `content_home` set " . $string);
+            } else if ($tipe == 'service') {
+                $string = '';
+                if ($request->hasFile('flow_img')) {
+                    $file = $request->file('flow_img');
+                    unset($allData['flow_img']);
+                    $location = 'img';
+                    $filename = $file->getClientOriginalName();
+                    $file->move($location, $filename);
+                    $url_file_name = $URL . '/' . $location . '/' .  $filename;
+                    $string = $string . 'flow_img' . "='" . $url_file_name . "',";
+                };
+                foreach ($allData as $key => $value) {
+                    $string = $string . $key . "='" . $value . "',";
+                }
+                $string = substr_replace($string, "", -1);
+                DB::select("UPDATE `content_service_and_product` set " . $string);
+            } else if ($tipe == 'contact') {
+                $string = '';
+                foreach ($allData as $key => $value) {
+                    $string = $string . $key . "='" . $value . "',";
+                }
+                $string = substr_replace($string, "", -1);
+                DB::select("UPDATE `content_contact_us` set " . $string);
             }
 
             return [
@@ -118,7 +163,7 @@ class GeneralContentController extends Controller
                 'data' => [],
                 'meta' => [
                     'status' => false,
-                    'message' => 'Terjadi kesalahan' . $e
+                    'message' => 'Terjadi kesalahan'
                 ],
             ];
         }

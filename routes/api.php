@@ -20,14 +20,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\API'], function () {
 
-    //Activities
-    // Route::get('getactivities', 'ActivitiesController@getActivities');
-    // Route::get('getcategoryactivities', 'ActivitiesController@getCategoryActivities');
-    // Route::get('getspecificactivities', 'ActivitiesController@getSpecificActivities');
-    // Route::delete('deleteactivities', 'ActivitiesController@deleteActivities');
-    // Route::post('insertactivities', 'ActivitiesController@insertActivities');
-    // Route::put('updateactivities', 'ActivitiesController@updateActivities');
-
+    //Content
     Route::get('getcontent', 'GeneralContentController@getContent');
     Route::put('editcontent', 'GeneralContentController@updateContent');
+
+    //Service
+    Route::get('getservice', 'ServiceController@getService');
+    Route::post('insertservice', 'ServiceController@insertService');
+    Route::delete('deleteservice', 'ServiceController@deleteService');
+    Route::put('updateservice', 'ServiceController@updateService');
+
+    //Product
+    Route::get('getproduct', 'ProductController@getProduct');
+    Route::post('insertproduct', 'ProductController@insertProduct');
+    Route::delete('deleteproduct', 'ProductController@deleteProduct');
+    Route::put('updateproduct', 'ProductController@updateProduct');
 });
