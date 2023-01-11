@@ -87,7 +87,7 @@ class ProductController extends Controller
     {
         try {
             $status = true;
-            $msg = 'berhasil menambah data';
+            $msg = 'berhasil mengubah data';
 
             request()->validate([
                 'id' => 'required'

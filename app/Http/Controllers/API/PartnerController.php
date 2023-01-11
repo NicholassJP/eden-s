@@ -6,15 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ServiceController extends Controller
+class PartnerController extends Controller
 {
-    public function getService()
+    public function getPartner()
     {
         try {
             $status = true;
             $msg = 'berhasil mengambil data';
-            $checked = request('checked');
-            $data = DB::select("SELECT id, title, description, img FROM `service` where checked like '%" . $checked . "%'");
+            $data = DB::select("SELECT id, partner_name, img FROM `partner`");
             $array = json_decode(json_encode($data), true);
 
             return [
@@ -29,39 +28,37 @@ class ServiceController extends Controller
                 'data' => [],
                 'meta' => [
                     'status' => false,
-                    'message' => 'Terjadi kesalahan' . $e
+                    'message' => 'Terjadi kesalahan'
                 ],
             ];
         }
     }
 
-    public function insertService()
+    public function insertPartner()
     {
         try {
             $status = true;
             $msg = 'berhasil menambah data';
 
             request()->validate([
-                'title' => 'required',
-                'description' => 'required',
+                'partner_name' => 'required',
                 'img' => 'required'
             ]);
 
             $URL = env('APP_URL');
-            $title = request('title');
-            $description = request('description');
+            $partner_name = request('partner_name');
 
             if (request()->hasFile('img')) {
                 $file = request()->file('img');
-                $location = 'service_img';
+                $location = 'product_img';
                 $filename = $file->getClientOriginalName();
                 $file->move($location, $filename);
                 $img_url = $URL . '/' . $location . '/' . $filename;
             };
 
-            DB::insert("insert into service
-            (title, description, img)
-            values (?, ?, ?)", [$title, $description, $img_url]);
+            DB::insert("insert into partner
+            (partner_name, img)
+            values (?, ?)", [$partner_name, $img_url]);
 
             return [
                 'data' => [],
@@ -75,13 +72,13 @@ class ServiceController extends Controller
                 'data' => [],
                 'meta' => [
                     'status' => false,
-                    'message' => 'Terjadi kesalahan' . $e
+                    'message' => 'Terjadi kesalahan'
                 ],
             ];
         }
     }
 
-    public function updateService()
+    public function updatePartner()
     {
         try {
             $status = true;
@@ -99,7 +96,7 @@ class ServiceController extends Controller
             if (request()->hasFile('img')) {
                 $file = request()->file('img');
                 unset($allData['img']);
-                $location = 'service_img';
+                $location = 'partner_img';
                 $filename = $file->getClientOriginalName();
                 $file->move($location, $filename);
                 $url_file_name = $URL . '/' . $location . '/' .  $filename;
@@ -108,39 +105,7 @@ class ServiceController extends Controller
             foreach ($allData as $key => $value) {
                 $string = $string . $key . "='" . $value . "',";
             }
-            DB::update("UPDATE `service` set " . $string . " updated_at=CURRENT_TIMESTAMP where id = " . $id);
-
-            return [
-                'data' => [],
-                'meta' => [
-                    'status' => $status,
-                    'message' => $msg
-                ],
-            ];
-        } catch (\Exception $e) {
-            return [
-                'data' => [],
-                'meta' => [
-                    'status' => false,
-                    'message' => 'Terjadi kesalahan' . $e
-                ],
-            ];
-        }
-    }
-
-    public function deleteService()
-    {
-        try {
-            request()->validate([
-                'id' => 'required'
-            ]);
-
-            $status = true;
-            $msg = 'berhasil menghapus data';
-
-            $id = request('id');
-
-            DB::select("delete from service where id = " . $id);
+            DB::update("UPDATE `partner` set " . $string . " updated_at=CURRENT_TIMESTAMP where id = " . $id);
 
             return [
                 'data' => [],
@@ -155,6 +120,39 @@ class ServiceController extends Controller
                 'meta' => [
                     'status' => false,
                     'message' => 'Terjadi kesalahan'
+                ],
+            ];
+        }
+    }
+
+    public function deletePartner()
+    {
+        try {
+            request()->validate([
+                'id' => 'required'
+            ]);
+
+            $status = true;
+            $msg = 'berhasil menghapus data';
+
+            $id = request('id');
+
+            DB::select("delete from partner
+            where id = " . $id);
+
+            return [
+                'data' => [],
+                'meta' => [
+                    'status' => $status,
+                    'message' => $msg
+                ],
+            ];
+        } catch (\Exception $e) {
+            return [
+                'data' => [],
+                'meta' => [
+                    'status' => false,
+                    'message' => 'Terjadi kesalahan' . $e
                 ],
             ];
         }

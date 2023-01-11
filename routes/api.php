@@ -35,4 +35,16 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\API'], func
     Route::post('insertproduct', 'ProductController@insertProduct');
     Route::delete('deleteproduct', 'ProductController@deleteProduct');
     Route::put('updateproduct', 'ProductController@updateProduct');
+
+    //Person
+    Route::get('getperson', 'PersonController@getPerson');
+    Route::post('insertperson', 'PersonController@insertPerson');
+    Route::delete('deleteperson', 'PersonController@deletePerson');
+    Route::put('updateperson', 'PersonController@updatePerson');
+
+    //Partner
+    Route::get('getpartner', 'PartnerController@getPartner');
+    Route::post('insertpartner', 'PartnerController@insertPartner');
+    Route::delete('deletepartner', 'PartnerController@deletePartner');
+    Route::put('updatepartner', 'PartnerController@updatePartner');
 });
