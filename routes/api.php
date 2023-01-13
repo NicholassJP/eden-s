@@ -73,4 +73,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\API'], func
     //Category and News
     Route::post('insertcan', 'CategoryAndNewsController@insertCAN');
     Route::delete('deletecan', 'CategoryAndNewsController@deleteCAN');
+
+    //Count
+    Route::get('getcount', 'MaxCheckedValidationController@getCount');
 });
