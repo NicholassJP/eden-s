@@ -43,17 +43,7 @@ class CategoryController extends Controller
             request()->validate([
                 'title' => 'required'
             ]);
-
-            // $URL = config('app.url');
             $title = request('title');
-
-            // if (request()->hasFile('img')) {
-            //     $file = request()->file('img');
-            //     $location = 'category_img';
-            //     $filename = $file->getClientOriginalName();
-            //     $file->move($location, $filename);
-            //     $img_url = $URL . '/' . $location . '/' . $filename;
-            // };
 
             DB::insert("insert into category
             (title)
@@ -84,24 +74,13 @@ class CategoryController extends Controller
             $msg = 'berhasil mengubah data';
 
             request()->validate([
-                'id' => 'required',
-                // 'img'=> 'required'
+                'id' => 'required'
             ]);
-            // $URL = config('app.url');
             $id = request('id');
             $allData = request()->all();
             unset($allData['_method']);
             unset($allData['id']);
             $string = '';
-            // if (request()->hasFile('img')) {
-            //     $file = request()->file('img');
-            //     unset($allData['img']);
-            //     $location = 'category_img';
-            //     $filename = $file->getClientOriginalName();
-            //     $file->move($location, $filename);
-            //     $url_file_name = $URL . '/' . $location . '/' .  $filename;
-            //     $string = $string . 'img' . "='" . $url_file_name . "',";
-            // };
             foreach ($allData as $key => $value) {
                 $string = $string . $key . "='" . $value . "',";
             }
