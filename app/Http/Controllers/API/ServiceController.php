@@ -14,7 +14,7 @@ class ServiceController extends Controller
             $status = true;
             $msg = 'berhasil mengambil data';
             $checked = request('checked');
-            $data = DB::select("SELECT id, title, description, img FROM `service` where checked like '%" . $checked . "%'");
+            $data = DB::select("SELECT * FROM `service` where checked like '%" . $checked . "%'");
             $array = json_decode(json_encode($data), true);
 
             return [
@@ -29,7 +29,7 @@ class ServiceController extends Controller
                 'data' => [],
                 'meta' => [
                     'status' => false,
-                    'message' => 'Terjadi kesalahan' . $e
+                    'message' => 'Terjadi kesalahan'
                 ],
             ];
         }
@@ -47,7 +47,7 @@ class ServiceController extends Controller
                 'img' => 'required'
             ]);
 
-            $URL = env('APP_URL');
+            $URL = config('app.url');
             $title = request('title');
             $description = request('description');
 
@@ -75,7 +75,7 @@ class ServiceController extends Controller
                 'data' => [],
                 'meta' => [
                     'status' => false,
-                    'message' => 'Terjadi kesalahan' . $e
+                    'message' => 'Terjadi kesalahan'
                 ],
             ];
         }
@@ -90,7 +90,7 @@ class ServiceController extends Controller
             request()->validate([
                 'id' => 'required'
             ]);
-            $URL = env('APP_URL');
+            $URL = config('app.url');
             $id = request('id');
             $allData = request()->all();
             unset($allData['_method']);
@@ -122,7 +122,7 @@ class ServiceController extends Controller
                 'data' => [],
                 'meta' => [
                     'status' => false,
-                    'message' => 'Terjadi kesalahan' . $e
+                    'message' => 'Terjadi kesalahan'
                 ],
             ];
         }

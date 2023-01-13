@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class GeneralContentController extends Controller
+class ContentController extends Controller
 {
     //content
     public function getContent()
@@ -26,7 +26,7 @@ class GeneralContentController extends Controller
                 $getData = DB::select("SELECT * FROM `content_contact_us`");
             }
 
-            $data = json_decode(json_encode($getData), true);
+            $data = json_decode(json_encode($getData[0]), true);
 
             return [
                 'data' => $data,
@@ -164,6 +164,118 @@ class GeneralContentController extends Controller
                 'meta' => [
                     'status' => false,
                     'message' => 'Terjadi kesalahan'
+                ],
+            ];
+        }
+    }
+
+    public function getHome()
+    {
+        try {
+            $data = json_decode(json_encode(DB::select("SELECT * FROM `content_home`")[0]), true);
+            $data['expertise'] = json_decode(json_encode(DB::select("SELECT title, img FROM `service` where checked=1")), true);
+            $data['activity'] = json_decode(json_encode(DB::select("SELECT title, short_desc, img FROM `news` where checked=1")), true);
+            $data['person'] = json_decode(json_encode(DB::select("SELECT name, position, quotes, img, fb_url, tw_url, ig_url FROM `person` where checked=1")), true);
+            $data['partner'] = json_decode(json_encode(DB::select("SELECT img FROM `partner`")), true);
+
+            return [
+                'data' => $data,
+                'meta' => [
+                    'status' => true,
+                    'message' => 'berhasil mengambil data'
+                ],
+            ];
+        } catch (\Exception $e) {
+            return [
+                'data' => [],
+                'meta' => [
+                    'status' => false,
+                    'message' => 'Terjadi kesalahan'
+                ],
+            ];
+        }
+    }
+
+    public function getServiceAndProduct()
+    {
+        try {
+            $data = json_decode(json_encode(DB::select("SELECT * FROM `content_service_and_product`")[0]), true);
+            $data['all_product'] = json_decode(json_encode(DB::select("select title, description, img from product order by title")), true);
+            $data['service'] = json_decode(json_encode(DB::select("select id, title, catalogue_check, demo_link_check, catalogue_url from service order by title")), true);
+            for ($i = 0; $i < count($data['service']); $i++) {
+                $id = $data['service'][$i]['id'];
+                $data['service'][$i]['product'] = json_decode(json_encode(DB::select("select title, description, img from product where service_id=" . $id . " order by title")), true);
+            }
+
+            return [
+                'data' => $data,
+                'meta' => [
+                    'status' => true,
+                    'message' => 'berhasil mengambil data'
+                ],
+            ];
+        } catch (\Exception $e) {
+            return [
+                'data' => [],
+                'meta' => [
+                    'status' => false,
+                    'message' => 'Terjadi kesalahan'
+                ],
+            ];
+        }
+    }
+
+    public function getNews()
+    {
+        try {
+            $data['all_project'] = json_decode(json_encode(DB::select("select title, long_desc, short_desc, img, uniquename from news order by title")), true);
+            $data['our_project'] = json_decode(json_encode(DB::select("select id, title from category order by title")), true);
+            for ($i = 0; $i < count($data['our_project']); $i++) {
+                $id = $data['our_project'][$i]['id'];
+                $data['our_project'][$i]['project'] = json_decode(json_encode(DB::select("SELECT n.title, n.long_desc, n.short_desc, n.img, n.uniquename FROM `category_and_news` can join news n on n.id=can.news_id  where category_id='" . $id . "' order by n.title")), true);
+            }
+
+            return [
+                'data' => $data,
+                'meta' => [
+                    'status' => true,
+                    'message' => 'berhasil mengambil data'
+                ],
+            ];
+        } catch (\Exception $e) {
+            return [
+                'data' => [],
+                'meta' => [
+                    'status' => false,
+                    'message' => 'Terjadi kesalahan'
+                ],
+            ];
+        }
+    }
+
+    public function getContact()
+    {
+        try {
+            $getData = DB::select("SELECT * FROM `content_contact_us`");
+            $data['category'] = json_decode(json_encode(DB::select("select id, title from service order by title")), true);
+            for ($i = 0; $i < count($data['category']); $i++) {
+                $id = $data['category'][$i]['id'];
+                $data['category'][$i]['sub_category'] = json_decode(json_encode(DB::select("SELECT title FROM `product` where service_id='" . $id . "' order by title")), true);
+            }
+
+            return [
+                'data' => $data,
+                'meta' => [
+                    'status' => true,
+                    'message' => 'berhasil mengambil data'
+                ],
+            ];
+        } catch (\Exception $e) {
+            return [
+                'data' => [],
+                'meta' => [
+                    'status' => false,
+                    'message' => 'Terjadi kesalahan' . $e
                 ],
             ];
         }

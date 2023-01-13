@@ -6,15 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PersonController extends Controller
+class NewsController extends Controller
 {
-    public function getPerson()
+    public function getNews()
     {
         try {
             $status = true;
             $msg = 'berhasil mengambil data';
             $checked = request('checked');
-            $data = DB::select("SELECT * FROM `person` where checked like '%" . $checked . "%'");
+            $data = DB::select("SELECT * FROM `news` where checked like '%" . $checked . "%'");
             $array = json_decode(json_encode($data), true);
 
             return [
@@ -35,41 +35,65 @@ class PersonController extends Controller
         }
     }
 
-    public function insertPerson()
+    public function getNewsDetail()
+    {
+        try {
+            $status = true;
+            $msg = 'berhasil mengambil data';
+            $unique = request('unique');
+            $data = DB::select("SELECT title, long_desc, img, created_at 'published date' FROM `news` where uniquename='" . $unique . "'");
+            $array = json_decode(json_encode($data), true);
+
+            return [
+                'data' => $array,
+                'meta' => [
+                    'status' => $status,
+                    'message' => $msg
+                ],
+            ];
+        } catch (\Exception $e) {
+            return [
+                'data' => [],
+                'meta' => [
+                    'status' => false,
+                    'message' => 'Terjadi kesalahan'
+                ],
+            ];
+        }
+    }
+
+    public function insertNews()
     {
         try {
             $status = true;
             $msg = 'berhasil menambah data';
 
             request()->validate([
-                'name' => 'required',
-                'position' => 'required',
-                'quotes' => 'required',
-                'img' => 'required',
-                'fb_url' => 'required',
-                'tw_url' => 'required',
-                'ig_url' => 'required'
+                'title' => 'required',
+                'long_desc' => 'required',
+                'short_desc' => 'required',
+                'img' => 'required'
             ]);
 
             $URL = config('app.url');
-            $name = request('name');
-            $position = request('position');
-            $quotes = request('quotes');
-            $fb_url = request('fb_url');
-            $tw_url = request('tw_url');
-            $ig_url = request('ig_url');
+            $title = request('title');
+            $long_desc = request('long_desc');
+            $short_desc = request('short_desc');
 
             if (request()->hasFile('img')) {
                 $file = request()->file('img');
-                $location = 'person_img';
+                $location = 'news_img';
                 $filename = $file->getClientOriginalName();
                 $file->move($location, $filename);
                 $img_url = $URL . '/' . $location . '/' . $filename;
             };
 
-            DB::insert("insert into person
-            (name, position, quotes, img, fb_url, tw_url, ig_url)
-            values (?, ?, ?, ?, ?, ?, ?)", [$name, $position, $quotes, $img_url, $fb_url, $tw_url, $ig_url]);
+            $unique = str_replace(" ", "-", $title);
+            $unique = preg_replace('/[^A-Za-z0-9\-]/', '', $unique);
+
+            DB::insert("insert into news
+            (title, long_desc, short_desc, img, uniquename)
+            values (?, ?, ?, ?, ?)", [$title, $long_desc, $short_desc, $img_url, $unique]);
 
             return [
                 'data' => [],
@@ -89,7 +113,7 @@ class PersonController extends Controller
         }
     }
 
-    public function updatePerson()
+    public function updateNews()
     {
         try {
             $status = true;
@@ -107,7 +131,7 @@ class PersonController extends Controller
             if (request()->hasFile('img')) {
                 $file = request()->file('img');
                 unset($allData['img']);
-                $location = 'person_img';
+                $location = 'service_img';
                 $filename = $file->getClientOriginalName();
                 $file->move($location, $filename);
                 $url_file_name = $URL . '/' . $location . '/' .  $filename;
@@ -116,7 +140,7 @@ class PersonController extends Controller
             foreach ($allData as $key => $value) {
                 $string = $string . $key . "='" . $value . "',";
             }
-            DB::update("UPDATE `person` set " . $string . " updated_at=CURRENT_TIMESTAMP where id = " . $id);
+            DB::update("UPDATE `news` set " . $string . " updated_at=CURRENT_TIMESTAMP where id = " . $id);
 
             return [
                 'data' => [],
@@ -136,7 +160,7 @@ class PersonController extends Controller
         }
     }
 
-    public function deletePerson()
+    public function deleteNews()
     {
         try {
             request()->validate([
@@ -148,8 +172,7 @@ class PersonController extends Controller
 
             $id = request('id');
 
-            DB::select("delete from person
-            where id = " . $id);
+            DB::select("delete from news where id = " . $id);
 
             return [
                 'data' => [],

@@ -21,8 +21,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\API'], function () {
 
     //Content
-    Route::get('getcontent', 'GeneralContentController@getContent');
-    Route::put('editcontent', 'GeneralContentController@updateContent');
+    Route::get('getcontent', 'ContentController@getContent');
+    Route::put('editcontent', 'ContentController@updateContent');
+    Route::get('gethome', 'ContentController@getHome');
+    Route::get('getsv', 'ContentController@getServiceAndProduct');
+    Route::get('getproject', 'ContentController@getNews');
+    Route::get('getcontact', 'ContentController@getContact');
+
+    //Inbox
+    Route::get('getinbox', 'ContactUsController@getInbox');
+    Route::post('insertinbox', 'ContactUsController@insertInbox');
+    Route::delete('deleteinbox', 'ContactUsController@deleteInbox');
 
     //Service
     Route::get('getservice', 'ServiceController@getService');
@@ -36,6 +45,19 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\API'], func
     Route::delete('deleteproduct', 'ProductController@deleteProduct');
     Route::put('updateproduct', 'ProductController@updateProduct');
 
+    //Category
+    Route::get('getcategory', 'CategoryController@getCategory');
+    Route::post('insertcategory', 'CategoryController@insertCategory');
+    Route::delete('deletecategory', 'CategoryController@deleteCategory');
+    Route::put('updatecategory', 'CategoryController@updateCategory');
+
+    //News
+    Route::get('getnews', 'NewsController@getNews');
+    Route::get('getnewsdetail', 'NewsController@getNewsDetail');
+    Route::post('insertnews', 'NewsController@insertNews');
+    Route::delete('deletenews', 'NewsController@deleteNews');
+    Route::put('updatenews', 'NewsController@updateNews');
+
     //Person
     Route::get('getperson', 'PersonController@getPerson');
     Route::post('insertperson', 'PersonController@insertPerson');
@@ -47,4 +69,8 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\API'], func
     Route::post('insertpartner', 'PartnerController@insertPartner');
     Route::delete('deletepartner', 'PartnerController@deletePartner');
     Route::put('updatepartner', 'PartnerController@updatePartner');
+
+    //Category and News
+    Route::post('insertcan', 'CategoryAndNewsController@insertCAN');
+    Route::delete('deletecan', 'CategoryAndNewsController@deleteCAN');
 });

@@ -13,7 +13,7 @@ class PartnerController extends Controller
         try {
             $status = true;
             $msg = 'berhasil mengambil data';
-            $data = DB::select("SELECT id, partner_name, img FROM `partner`");
+            $data = DB::select("SELECT * FROM `partner`");
             $array = json_decode(json_encode($data), true);
 
             return [
@@ -45,12 +45,12 @@ class PartnerController extends Controller
                 'img' => 'required'
             ]);
 
-            $URL = env('APP_URL');
+            $URL = config('app.url');
             $partner_name = request('partner_name');
 
             if (request()->hasFile('img')) {
                 $file = request()->file('img');
-                $location = 'product_img';
+                $location = 'partner_img';
                 $filename = $file->getClientOriginalName();
                 $file->move($location, $filename);
                 $img_url = $URL . '/' . $location . '/' . $filename;
@@ -87,7 +87,7 @@ class PartnerController extends Controller
             request()->validate([
                 'id' => 'required'
             ]);
-            $URL = env('APP_URL');
+            $URL = config('app.url');
             $id = request('id');
             $allData = request()->all();
             unset($allData['_method']);
@@ -152,7 +152,7 @@ class PartnerController extends Controller
                 'data' => [],
                 'meta' => [
                     'status' => false,
-                    'message' => 'Terjadi kesalahan' . $e
+                    'message' => 'Terjadi kesalahan'
                 ],
             ];
         }

@@ -14,7 +14,7 @@ class ProductController extends Controller
             $status = true;
             $msg = 'berhasil mengambil data';
             $service_id = request('service_id');
-            $data = DB::select("SELECT id, service_id, title, description, img FROM `product` where service_id like '%" . $service_id . "%'");
+            $data = DB::select("SELECT * FROM `product` where service_id like '%" . $service_id . "%'");
             $array = json_decode(json_encode($data), true);
 
             return [
@@ -48,7 +48,7 @@ class ProductController extends Controller
                 'img' => 'required'
             ]);
 
-            $URL = env('APP_URL');
+            $URL = config('app.url');
             $service_id = request('service_id');
             $title = request('title');
             $description = request('description');
@@ -92,7 +92,7 @@ class ProductController extends Controller
             request()->validate([
                 'id' => 'required'
             ]);
-            $URL = env('APP_URL');
+            $URL = config('app.url');
             $id = request('id');
             $allData = request()->all();
             unset($allData['_method']);
@@ -157,7 +157,7 @@ class ProductController extends Controller
                 'data' => [],
                 'meta' => [
                     'status' => false,
-                    'message' => 'Terjadi kesalahan' . $e
+                    'message' => 'Terjadi kesalahan'
                 ],
             ];
         }

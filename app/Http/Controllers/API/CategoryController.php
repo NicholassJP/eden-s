@@ -6,15 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PersonController extends Controller
+class CategoryController extends Controller
 {
-    public function getPerson()
+    public function getCategory()
     {
         try {
             $status = true;
             $msg = 'berhasil mengambil data';
-            $checked = request('checked');
-            $data = DB::select("SELECT * FROM `person` where checked like '%" . $checked . "%'");
+            $data = DB::select("SELECT * FROM `category`");
             $array = json_decode(json_encode($data), true);
 
             return [
@@ -35,41 +34,30 @@ class PersonController extends Controller
         }
     }
 
-    public function insertPerson()
+    public function insertCategory()
     {
         try {
             $status = true;
             $msg = 'berhasil menambah data';
 
             request()->validate([
-                'name' => 'required',
-                'position' => 'required',
-                'quotes' => 'required',
-                'img' => 'required',
-                'fb_url' => 'required',
-                'tw_url' => 'required',
-                'ig_url' => 'required'
+                'title' => 'required'
             ]);
 
-            $URL = config('app.url');
-            $name = request('name');
-            $position = request('position');
-            $quotes = request('quotes');
-            $fb_url = request('fb_url');
-            $tw_url = request('tw_url');
-            $ig_url = request('ig_url');
+            // $URL = config('app.url');
+            $title = request('title');
 
-            if (request()->hasFile('img')) {
-                $file = request()->file('img');
-                $location = 'person_img';
-                $filename = $file->getClientOriginalName();
-                $file->move($location, $filename);
-                $img_url = $URL . '/' . $location . '/' . $filename;
-            };
+            // if (request()->hasFile('img')) {
+            //     $file = request()->file('img');
+            //     $location = 'category_img';
+            //     $filename = $file->getClientOriginalName();
+            //     $file->move($location, $filename);
+            //     $img_url = $URL . '/' . $location . '/' . $filename;
+            // };
 
-            DB::insert("insert into person
-            (name, position, quotes, img, fb_url, tw_url, ig_url)
-            values (?, ?, ?, ?, ?, ?, ?)", [$name, $position, $quotes, $img_url, $fb_url, $tw_url, $ig_url]);
+            DB::insert("insert into category
+            (title)
+            values (?)", [$title]);
 
             return [
                 'data' => [],
@@ -89,34 +77,35 @@ class PersonController extends Controller
         }
     }
 
-    public function updatePerson()
+    public function updateCategory()
     {
         try {
             $status = true;
             $msg = 'berhasil mengubah data';
 
             request()->validate([
-                'id' => 'required'
+                'id' => 'required',
+                // 'img'=> 'required'
             ]);
-            $URL = config('app.url');
+            // $URL = config('app.url');
             $id = request('id');
             $allData = request()->all();
             unset($allData['_method']);
             unset($allData['id']);
             $string = '';
-            if (request()->hasFile('img')) {
-                $file = request()->file('img');
-                unset($allData['img']);
-                $location = 'person_img';
-                $filename = $file->getClientOriginalName();
-                $file->move($location, $filename);
-                $url_file_name = $URL . '/' . $location . '/' .  $filename;
-                $string = $string . 'img' . "='" . $url_file_name . "',";
-            };
+            // if (request()->hasFile('img')) {
+            //     $file = request()->file('img');
+            //     unset($allData['img']);
+            //     $location = 'category_img';
+            //     $filename = $file->getClientOriginalName();
+            //     $file->move($location, $filename);
+            //     $url_file_name = $URL . '/' . $location . '/' .  $filename;
+            //     $string = $string . 'img' . "='" . $url_file_name . "',";
+            // };
             foreach ($allData as $key => $value) {
                 $string = $string . $key . "='" . $value . "',";
             }
-            DB::update("UPDATE `person` set " . $string . " updated_at=CURRENT_TIMESTAMP where id = " . $id);
+            DB::update("UPDATE `category` set " . $string . " updated_at=CURRENT_TIMESTAMP where id = " . $id);
 
             return [
                 'data' => [],
@@ -136,7 +125,7 @@ class PersonController extends Controller
         }
     }
 
-    public function deletePerson()
+    public function deleteCategory()
     {
         try {
             request()->validate([
@@ -148,7 +137,7 @@ class PersonController extends Controller
 
             $id = request('id');
 
-            DB::select("delete from person
+            DB::select("delete from category
             where id = " . $id);
 
             return [
