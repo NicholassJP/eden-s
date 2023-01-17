@@ -4,62 +4,41 @@
             <li class="nav-item">
                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">All Service</a>
             </li>
+            @foreach($tampil_service_product['service'] as $value)
             <li class="nav-item">
-                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Mining</a>
+                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#{{$value['title']}}" role="tab" aria-controls="pills-profile" aria-selected="false">{{$value['title']}}</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Supplies</a>
-            </li>
+            @endforeach
         </ul>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <div class="row">
+                    @foreach($tampil_service_product['all_product'] as $value)
                     <div class="col-lg-4 mb-2">
                         <div class="ser-card-section1">
                             <img class="mb-2" src="/img/section3/bg1.png" alt="">
-                            <h5>Mining</h5>
+                            <h5>{{$value['title']}}</h5>
                             <p>Lorem ipsum dolor sit amet consectetur. Aliquam elit adipiscing integer natoque urna auctor. </p>
                         </div>
                     </div>
-                    <div class="col-lg-4 mb-2">
-                        <div class="ser-card-section1">
-                            <img class="mb-2" src="/img/section3/bg1.png" alt="">
-                            <h5>Mining</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur. Aliquam elit adipiscing integer natoque urna auctor. </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-2">
-                        <div class="ser-card-section1">
-                            <img class="mb-2" src="/img/section3/bg1.png" alt="">
-                            <h5>Mining</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur. Aliquam elit adipiscing integer natoque urna auctor. </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-2">
-                        <div class="ser-card-section1">
-                            <img class="mb-2" src="/img/section3/bg1.png" alt="">
-                            <h5>Mining</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur. Aliquam elit adipiscing integer natoque urna auctor. </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-2">
-                        <div class="ser-card-section1">
-                            <img class="mb-2" src="/img/section3/bg1.png" alt="">
-                            <h5>Mining</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur. Aliquam elit adipiscing integer natoque urna auctor. </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-2">
-                        <div class="ser-card-section1">
-                            <img class="mb-2" src="/img/section3/bg1.png" alt="">
-                            <h5>Mining</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur. Aliquam elit adipiscing integer natoque urna auctor. </p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+            @foreach($tampil_service_product['service'] as $value)
+            <div class="tab-pane fade" id="{{$value['title']}}" role="tabpanel" aria-labelledby="{{$value['title']}}-tab">
+                <div class="row">
+                    @foreach($value['product'] as $value_product)
+                    <div class="col-lg-4 mb-2">
+                        <div class="ser-card-section1">
+                            <img class="mb-2" src="/img/section3/bg1.png" alt="">
+                            <h5>{{$value_product['title']}}</h5>
+                            <p>Lorem ipsum dolor sit amet consectetur. Aliquam elit adipiscing integer natoque urna auctor. </p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            @endforeach
         </div>
     </div>
 </section>

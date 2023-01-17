@@ -11,7 +11,7 @@
                 <div id="bg-section-1" class="d-flex align-items-center">
                     <div class="container">
                         <div class="box-section1">
-                            <h1 class="mb-2">Lorem Ipsum</h1>
+                            <h1 class="mb-2">{{$tampil_nav_foot['news_header']}}</h1>
                             <p class="mb-3 wt-section1">Lorem ipsum dolor sit amet consectetur. Sed egestas donec tincidunt at imperdiet ultricies. Convallis sed ac gravida vel. A tellus faucibus non mauris pellentesque donec nisl est commodo. Lectus est ut et facilisis magna nibh sed amet.
                             </p>
                             <button class="btn btn-edens mt-1" type="button">Read More</button>

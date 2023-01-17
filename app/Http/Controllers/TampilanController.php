@@ -24,4 +24,8 @@ class TampilanController extends Controller
     {
         return view('contactus', ['title' => 'contactus']);
     }
+    public function detail_service_product()
+    {
+        return view('detail_service_product', ['title' => 'detail_service_product']);
+    }
 }
