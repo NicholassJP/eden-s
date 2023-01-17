@@ -15,9 +15,12 @@
         wheel: true,
         breakpoints: {
             994: {
-                perPage: 1,
-                height: '30rem',
-                direction: 'ltr',
+                perPage: 2,
+                height: '55rem',
+            },
+            765: {
+                perPage: 2,
+                height: '50rem',
             },
         }
     });

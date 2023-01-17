@@ -1,5 +1,10 @@
 @include('layout.head')
-
+@php
+$json = json_decode(file_get_contents('https://staging.edenslightconsultant.com/api/v1/gethome'), true);
+$tampil_home = $json["data"];
+$json = json_decode(file_get_contents('https://staging.edenslightconsultant.com/api/v1/getcontent?tipe=nav'), true);
+$tampil_nav_foot = $json["data"];
+@endphp
 <body>
     @include('layout.navbar')
     @include('home.section1')

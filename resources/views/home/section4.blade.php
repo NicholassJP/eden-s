@@ -1,7 +1,7 @@
 <section id="section-4">
     <div class="container">
         <div class="text-center">
-            <h1>Our Expertise</h1>
+            <h1>Our Activites</h1>
         </div>
         <div class="splide">
             <div class="splide__track">

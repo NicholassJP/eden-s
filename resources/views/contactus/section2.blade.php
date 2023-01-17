@@ -23,23 +23,23 @@
                             <input type="text" name="email" placeholder="Email*" class="form-control" required>
                         </div>
                     </div>
-                    <!-- Address -->
+                    <!-- Category -->
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <select name="address" id="" class="form-control">
-                                <option value="" disabled selected>Address*</option>
-                                <option value="">a</option>
-                                <option value="other">Other</option>
+                            <select name="Category" class="form-control">
+                                <option value="" selected disabled>Subject</option>
+                                @foreach($tampil_kontak as $value)
+                                <option id="{{$value['id']}}" value="">{{$value['title']}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
                     <!-- Subject -->
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <select name="subject" id="" class="form-control">
+                            <select name="subject" class="form-control">
+
                                 <option value="" disabled selected>Subject*</option>
-                                <option value="">a</option>
-                                <option value="other">Other</option>
                             </select>
                         </div>
                     </div>
