@@ -256,7 +256,7 @@ class ContentController extends Controller
     public function getContact()
     {
         try {
-            $getData = DB::select("SELECT * FROM `content_contact_us`");
+            $data = json_decode(json_encode(DB::select("SELECT * FROM `content_contact_us`")[0]), true);
             $data['category'] = json_decode(json_encode(DB::select("select id, title from service order by title")), true);
             for ($i = 0; $i < count($data['category']); $i++) {
                 $id = $data['category'][$i]['id'];
