@@ -8,13 +8,15 @@
                     <!-- Name -->
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <input type="text" name="name" id="name" placeholder="Name*" class="form-control" required>
+                            <input type="text" name="name" id="name" placeholder="Name*" class="form-control"
+                                required>
                         </div>
                     </div>
                     <!-- Phone Number -->
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <input type="text" name="phone_number" id="phone_number" placeholder="Phone Number*" class="form-control" required>
+                            <input type="text" name="phone_number" id="phone_number" placeholder="Phone Number*"
+                                class="form-control" required>
                         </div>
                     </div>
                     <!-- Email -->
@@ -52,7 +54,10 @@
 
             </div>
             <div class="col-lg-6">
-                <iframe class="google-maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126920.28185631866!2d106.75947810247757!3d-6.229571229258799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta!5e0!3m2!1sen!2sid!4v1673336220317!5m2!1sen!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe class="google-maps"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126920.28185631866!2d106.75947810247757!3d-6.229571229258799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta!5e0!3m2!1sen!2sid!4v1673336220317!5m2!1sen!2sid"
+                    style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>
@@ -61,15 +66,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <!-- Dropdown -->
 <script>
-    var data = {{Js::from($getcontact)}};
-    console.log(data);  
+    var data = {{ Js::from($getcontact) }};
+    console.log(data);
     $(document).ready(function() {
         data['category'].forEach(function(value) {
             $('#category').append(new Option(value['title'], value['title']));
         });
 
         $("#category").change(function() {
-            $("#sel_state").empty().append($('<option>', {
+            $("#sub_category").empty().append($('<option>', {
                 selected: true,
                 disabled: true,
                 value: 'Sub Category',
@@ -79,7 +84,8 @@
             data['category'].forEach(function(value) {
                 if (value['title'] == $('#category').val()) {
                     value['sub_category'].forEach(function(sub_value) {
-                        $('#sub_category').append(new Option(sub_value['title'], sub_value['title']));
+                        $('#sub_category').append(new Option(sub_value['title'],
+                            sub_value['title']));
                     });
                 }
             });
