@@ -1,37 +1,67 @@
 <section id="section-1">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div id="bg-section-1" class="d-flex align-items-center">
-                    <div class="container">
-                        <div class="box-section1">
-                            <h1 class="mb-2">{{$tampil_nav_foot['news_header']}}</h1>
-                            <p class="mb-3 wt-section1">Lorem ipsum dolor sit amet consectetur. Sed egestas donec tincidunt at imperdiet ultricies. Convallis sed ac gravida vel. A tellus faucibus non mauris pellentesque donec nisl est commodo. Lectus est ut et facilisis magna nibh sed amet.
-                            </p>
-                            <button class="btn btn-edens mt-1" type="button">Read More</button>
-                        </div>
-                    </div>
+    <link rel="stylesheet" href="{{ asset('css/slide.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}">
+    <div class="swiper bg-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="/img/background.png" alt="">
+                <div class="text-content">
+                    <h2 class="title">{{$tampil_nav_foot['news_header']}}</h2>
+                    <p>
+                        {{$tampil_nav_foot['news_desc']}}
+                    </p>
+                    <button class="read-btn">
+                        Read More <i class="uil uil-arrow-right"></i>
+                    </button>
                 </div>
             </div>
-            @for ($i = 1; $i <= 3; $i++) <div class="carousel-item">
-                <div id="bg-section-1" class="d-flex align-items-center">
-                    <div class="container">
-                        <div class="box-section1">
-                            <h1 class="mb-2">Lorem Ipsum</h1>
-                            <p class="mb-3 wt-section1">Lorem ipsum dolor sit amet consectetur. Sed egestas donec tincidunt at imperdiet ultricies. Convallis sed ac gravida vel. A tellus faucibus non mauris pellentesque donec nisl est commodo. Lectus est ut et facilisis magna nibh sed amet.
-                            </p>
-                            <button class="btn btn-edens mt-1" type="button">Read More</button>
-                        </div>
-                    </div>
+            <div class="swiper-slide dark-layer">
+                <img src="img/background2.png" alt="" />
+                <div class="text-content">
+                    <h2 class="title">{{$tampil_nav_foot['news_header']}}</h2>
+                    <p>
+                        {{$tampil_nav_foot['news_desc']}}
+                    </p>
+                    <button class="read-btn">
+                        Read More <i class="uil uil-arrow-right"></i>
+                    </button>
                 </div>
+            </div>
+            <div class="swiper-slide dark-layer">
+                <img src="img/background3.png" alt="" />
+                <div class="text-content">
+                    <h2 class="title">{{$tampil_nav_foot['news_header']}}</h2>
+                    <p>
+                        {{$tampil_nav_foot['news_desc']}}
+                    </p>
+                    <button class="read-btn">
+                        Read More <i class="uil uil-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <img src="img/background4.png" alt="" />
+                <div class="text-content">
+                    <h2 class="title">{{$tampil_nav_foot['news_header']}}</h2>
+                    <p>
+                        {{$tampil_nav_foot['news_desc']}}
+                    </p>
+                    <button class="read-btn">
+                        Read More <i class="uil uil-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-        @endfor
     </div>
+
+    <div class="bg-slider-thumbs">
+        <div class="swiper-wrapper thumbs-container">
+            <img src="/img/background.png" class="swiper-slide" alt="" />
+            <img src="/img/background2.png" class="swiper-slide" alt="" />
+            <img src="/img/background3.png" class="swiper-slide" alt="" />
+            <img src="/img/background4.png" class="swiper-slide" alt="" />
+        </div>
     </div>
+    <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('js/swiper-main.js') }}"></script>
 </section>

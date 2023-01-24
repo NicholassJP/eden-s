@@ -22,7 +22,10 @@ class TampilanController extends Controller
     }
     public function contactus()
     {
-        return view('contactus', ['title' => 'contactus']);
+        $jsondetail = json_decode(file_get_contents('https://staging.edenslightconsultant.com/api/v1/getcontact'), true);
+        $getcontact = $jsondetail["data"];
+   
+        return view('contactus', ['title' => 'contactus', 'getcontact' => $getcontact]);
     }
     public function detail_service_product()
     {

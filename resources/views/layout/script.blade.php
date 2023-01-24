@@ -4,6 +4,19 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
+<!-- WA -->
+<script>
+    $(document).ready(function() {
+        $("#btnSubmit").click(function(e) {
+            e.preventDefault();
+            var name = $("#name").val();
+            var phone_number = $("#phone_number").val();
+            var str = "https://api.whatsapp.com/send?phone=6281326694806&text=Name : " + name + "%0a" + "Phone%20Number : " + phone_number;
+            window.open(str, '_blank');
+        });
+    });
+</script>
+
 <!-- Splide -->
 <script>
     var splide = new Splide('.splide', {
