@@ -204,7 +204,7 @@ class ContentController extends Controller
             $data['service'] = json_decode(json_encode(DB::select("select id, title, catalogue_check, demo_link_check, catalogue_url from service order by title")), true);
             for ($i = 0; $i < count($data['service']); $i++) {
                 $id = $data['service'][$i]['id'];
-                $data['service'][$i]['product'] = json_decode(json_encode(DB::select("select title, description, img from product where service_id=" . $id . " order by title")), true);
+                $data['service'][$i]['product'] = json_decode(json_encode(DB::select("select title, description, img, demo_url from product where service_id=" . $id . " order by title")), true);
             }
 
             return [
