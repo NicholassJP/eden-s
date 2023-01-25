@@ -532,4 +532,11 @@
   }
   .no-decoration:hover{
     color: unset;
+    text-decoration: unset;
+    cursor: pointer;
+  }
+
+  .modal-lg {
+    max-width: 100%;
+    margin: 15px;
   }

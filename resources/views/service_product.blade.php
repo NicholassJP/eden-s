@@ -10,7 +10,7 @@ $tampil_service_product = $json["data"];
     @include('home.section1')
     @include('service_product.section1')
     @include('service_product.section2')
-    @include('layout.script')
+
     @include('layout.footer')
 </body>
 
