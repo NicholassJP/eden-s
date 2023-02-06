@@ -115,7 +115,7 @@
 .swiper-slide .text-content .read-btn{
   border: none;
   outline: none;
-  background-color: #f1c944;
+  background-color: #e6b800;
   color: white;
   font-size: 1em;
   font-weight: 500;
@@ -153,7 +153,7 @@
   height: 100vh;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgb(0 0 0 / 22%);;
 }
 
 .bg-slider-thumbs{

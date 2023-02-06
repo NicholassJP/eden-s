@@ -168,77 +168,94 @@
                     <div class="row">
                         @foreach($value['product'] as $value_product)
                         <div class="col-lg-4 mb-2">
-                            <div class="ser-card-section1">
-                                <img class="mb-2" src="/img/section3/bg1.png" alt="">
-                                <h5>{{$value_product['title']}}</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur. Aliquam elit adipiscing integer natoque urna auctor. </p>
+                            <a class="no-decoration" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{$value_product['title']}}">
+                                <div class="ser-card-section1">
+                                    <img class="mb-2" src="/img/section3/bg1.png" alt="">
+                                    <h5>{{$value_product['title']}}</h5>
+                                    <p>Lorem ipsum dolor sit amet consectetur. Aliquam elit adipiscing integer natoque urna auctor. </p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="modal fade" id="{{$value_product['title']}}" tabindex="-1" role="dialog" aria-labelledby="{{$value_product['title']}}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="container pb-5 pt-5">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="product-images">
+                                                    <div class="slider">
+                                                        <div>
+                                                            <a href="img/news/news1.jpg" data-lightbox="lightbox">
+                                                                <img data-lazy="img/news/news1.jpg" />
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <a href="img/section3/bg2.png" data-lightbox="lightbox">
+                                                                <img data-lazy="img/section3/bg2.png" />
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <a href="img/section3/bg3.png" data-lightbox="lightbox">
+                                                                <img data-lazy="img/section3/bg3.png" />
+                                                            </a>
+                                                        </div>
+                                                        <div>
+                                                            <a href="img/section3/bg4.png" data-lightbox="lightbox">
+                                                                <img data-lazy="img/section3/bg4.png" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slider-thumbnails">
+                                                        <div>
+                                                            <img data-lazy="img/news/news1.jpg" />
+                                                        </div>
+                                                        <div>
+                                                            <img data-lazy="img/section3/bg2.png" />
+                                                        </div>
+                                                        <div>
+                                                            <img data-lazy="img/section3/bg3.png" />
+                                                        </div>
+                                                        <div>
+                                                            <img data-lazy="img/section3/bg4.png" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <h1 class="mt-4">{{$value_product['title']}}</h1>
+                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, magni optio ab nostrum laborum quaerat atque, doloremque reprehenderit quos saepe mollitia cupiditate esse sapiente aperiam, odio odit officia tempore fugiat? Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, magni optio ab nostrum laborum quaerat atque, doloremque reprehenderit quos saepe mollitia cupiditate esse sapiente aperiam, odio odit officia tempore fugiat?</p>
+                                                <a href="/contactus#cont-section-2" class="btn btn-edens">
+                                                    Contact Us
+                                                </a>
+                                                @if ($value['demo_link_check'] == 1)
+                                                <a href="/contactus#cont-section-2" class="btn btn-edens">
+                                                    Demo Url
+                                                </a>
+                                                @else
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         @endforeach
                     </div>
+                    @if ($value['catalogue_check'] == 1)
+                    <div class="text-right mt-2">
+                        <button class="btn btn-edens">
+                            e-Catalouge
+                        </button>
+                    </div>
+                    @else
+                    @endif
                 </div>
                 @endforeach
             </div>
         </div>
     </section>
 
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="container pb-5 pt-5">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="product-images">
-                                <div class="slider">
-                                    <div>
-                                        <a href="img/news/news1.jpg" data-lightbox="lightbox">
-                                            <img data-lazy="img/news/news1.jpg" />
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <a href="img/section3/bg2.png" data-lightbox="lightbox">
-                                            <img data-lazy="img/section3/bg2.png" />
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <a href="img/section3/bg3.png" data-lightbox="lightbox">
-                                            <img data-lazy="img/section3/bg3.png" />
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <a href="img/section3/bg4.png" data-lightbox="lightbox">
-                                            <img data-lazy="img/section3/bg4.png" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="slider-thumbnails">
-                                    <div>
-                                        <img data-lazy="img/news/news1.jpg" />
-                                    </div>
-                                    <div>
-                                        <img data-lazy="img/section3/bg2.png" />
-                                    </div>
-                                    <div>
-                                        <img data-lazy="img/section3/bg3.png" />
-                                    </div>
-                                    <div>
-                                        <img data-lazy="img/section3/bg4.png" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <h1 class="mt-4">Mining</h1>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, magni optio ab nostrum laborum quaerat atque, doloremque reprehenderit quos saepe mollitia cupiditate esse sapiente aperiam, odio odit officia tempore fugiat? Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, magni optio ab nostrum laborum quaerat atque, doloremque reprehenderit quos saepe mollitia cupiditate esse sapiente aperiam, odio odit officia tempore fugiat?</p>
-                            <a href="/contactus#cont-section-2" class="btn btn-submit">
-                                Contact Us
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -3,7 +3,7 @@ html{
 }
 /* Navbar */
 .nav-custom{
-    background-color: rgba(0, 0, 0, 0.295);
+    background-color: transparent;
 }
 .nav-custom a{
     color: white !important;
@@ -17,18 +17,37 @@ html{
 .navbar-toggler{
     border: unset;
 }
+.logo img{
+    width: 60px;
+}
+.nav-bar{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 200px;
+    transition: 0.3s ease;
+}
+.color-active{
+    background-color: black;
+}
 
 /* None */
 .desktop-none{
     display: none;
+}
+.mobile-none{
+    display: block;
 }
 
 /* Universal */
 .btn-edens{
     padding: 6px 12px;
     border-radius: 8px;
-    background-color: #F1C944CC;
-    color: white;
+    background-color: #F1C944;
+    border: 1px solid black;
+    color: black;
 }
 .btn-edens:hover{
     background-color: #806718cc;
@@ -261,7 +280,7 @@ html{
 }
 .card-head-section6{
     background-color: #F2F5F7;
-    padding: 60px;
+    padding: 20px;
     border-radius: 8px;
 }
 .card-section6{
@@ -462,6 +481,15 @@ html{
 @media (max-width: 992px) {
     .desktop-none{
         display: block;
+    }
+    .mobile-none{
+        display: none;
+    }
+    .nav-bar{
+        padding: 0;
+    }
+    .navbar-collapse .gap-1{
+        gap: 0 !important;
     }
     .google-maps{
         height: 400px;
