@@ -5,7 +5,7 @@
                 <h1>Our Expertise</h1>
                 <div class="row">
                     @foreach($tampil_home['expertise'] as $value)
-                    <div class="col-lg-6 mt-4">
+                    <div class="col-6 mt-4">
                         <a class="no-decoration" href="/service_product">
                             <div class="card-section justify-content-center">
                                 <div class="wrapper-img1">

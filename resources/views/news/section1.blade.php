@@ -18,11 +18,13 @@
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <div class="row" id="paginate">
                     @for ($i = 1; $i <= 12; $i++) <div class="test-group col-lg-4">
-                        <div class="mb-4">
-                            <div class="wrapper-img">
-                                <img class="news-img img-fluid" src="/img/news/news2.jpg" alt="">
+                        <a href="/detail_news">
+                            <div class="mb-4">
+                                <div class="wrapper-img">
+                                    <img class="news-img img-fluid" src="/img/news/news2.jpg" alt="">
+                                </div>
                             </div>
-                        </div>
+                        </a>
                 </div>
                 @endfor
             </div>

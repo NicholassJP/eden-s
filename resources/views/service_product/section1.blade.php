@@ -185,7 +185,7 @@
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
-                <div class="container pb-3 pt-3">
+                <div class="container pb-5 pt-5">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="product-images">
@@ -230,9 +230,9 @@
                         <div class="col-lg-6">
                             <h1 class="mt-4">Mining</h1>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, magni optio ab nostrum laborum quaerat atque, doloremque reprehenderit quos saepe mollitia cupiditate esse sapiente aperiam, odio odit officia tempore fugiat? Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, magni optio ab nostrum laborum quaerat atque, doloremque reprehenderit quos saepe mollitia cupiditate esse sapiente aperiam, odio odit officia tempore fugiat?</p>
-                            <button class="btn btn-submit">
+                            <a href="/contactus#cont-section-2" class="btn btn-submit">
                                 Contact Us
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

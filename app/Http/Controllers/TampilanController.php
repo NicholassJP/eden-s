@@ -31,4 +31,8 @@ class TampilanController extends Controller
     {
         return view('detail_service_product', ['title' => 'detail_service_product']);
     }
+    public function detail_news()
+    {
+        return view('detail_news', ['title' => 'detail_news']);
+    }
 }

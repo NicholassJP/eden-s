@@ -18,5 +18,6 @@ Route::get('/', [TampilanController::class, 'index']);
 Route::get('/service_product', [TampilanController::class, 'service_product']);
 Route::get('/detail_service_product', [TampilanController::class, 'detail_service_product']);
 Route::get('/news', [TampilanController::class, 'news']);
+Route::get('/detail_news', [TampilanController::class, 'detail_news']);
 Route::get('/contactus', [TampilanController::class, 'contactus']);
 
