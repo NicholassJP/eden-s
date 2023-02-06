@@ -14,13 +14,13 @@
                     <!-- Phone Number -->
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <input type="text" name="phone_number" id="phone_number" placeholder="Phone Number*" class="form-control" required>
+                            <input type="text" name="phone_number" id="phone_number" placeholder="Phone Number*" class="form-control" maxlength="12" required>
                         </div>
                     </div>
                     <!-- Email -->
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <input type="text" name="email" placeholder="Email*" class="form-control" required>
+                            <input type="text" name="email" id="email" placeholder="Email*" class="form-control" required>
                         </div>
                     </div>
                     <!-- Category -->
@@ -74,13 +74,44 @@
 </section>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<!-- Number Only -->
+<script>
+    // Restricts input for the given textbox to the given inputFilter.
+function setInputFilter(textbox, inputFilter, errMsg) {
+  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop", "focusout"].forEach(function(event) {
+    textbox.addEventListener(event, function(e) {
+      if (inputFilter(this.value)) {
+        // Accepted value
+        if (["keydown","mousedown","focusout"].indexOf(e.type) >= 0){
+          this.classList.remove("input-error");
+          this.setCustomValidity("");
+        }
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        // Rejected value - restore the previous one
+        this.classList.add("input-error");
+        this.setCustomValidity(errMsg);
+        this.reportValidity();
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      } else {
+        // Rejected value - nothing to restore
+        this.value = "";
+      }
+    });
+  });
+}
+
+
+// Install input filters.
+setInputFilter(document.getElementById("phone_number"), function(value) {
+  return /^-?\d*$/.test(value); }, "Must be number");
+</script>
 <!-- Dropdown -->
 <script>
-    var data = {
-        {
-            Js::from($getcontact)
-        }
-    };
+    var data = {{Js::from($getcontact)}};
     console.log(data);
     $(document).ready(function() {
         data['category'].forEach(function(value) {

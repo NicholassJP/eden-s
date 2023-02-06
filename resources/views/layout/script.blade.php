@@ -11,7 +11,10 @@
             e.preventDefault();
             var name = $("#name").val();
             var phone_number = $("#phone_number").val();
-            var str = "https://api.whatsapp.com/send?phone=6281326694806&text=Name : " + name + "%0a" + "Phone%20Number : " + phone_number;
+            var email = $("#email").val();
+            var category = $("#category").val();
+            var sub_category = $("#sub_category").val();
+            var str = "https://api.whatsapp.com/send?phone=6281326694806&text=Name : " + name + "%0a" + "Phone%20Number : " + phone_number + "%0a" + "Email : " + email + "%0a" + "Category : " + category + "%0a" + "Sub Category : " + sub_category;
             window.open(str, '_blank');
         });
     });

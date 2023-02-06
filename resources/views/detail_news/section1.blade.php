@@ -7,7 +7,22 @@
                 </div>
                 <p class="card-text"><small class="text-muted">July 14, 2022</small></p>
                 <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum efficitur nibh ipsum, sagittis eleifend tellus pretium ac. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec porta semper metus a laoreet.</h5>
-                <div class="d-flex mt-3 mb-3"><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-instagram"></i></div>
+                <div class="box-social p-0 pb-2 page-footer">
+                    <div class="d-flex align-self-end justify-content-center gap-1">
+                        <a href="">
+                            <div class="medsos-ig"><i class="fa-brands fa-instagram"></i></div>
+                        </a>
+                        <a class="loc" href="">
+                            <div class="medsos-loc"><i class="fa-solid fa-location-dot"></i></i></div>
+                        </a>
+                        <a class="twit" href="">
+                            <div class="medsos-twit"><i class="fa-brands fa-twitter"></i></div>
+                        </a>
+                        <a class="ytb" href="">
+                            <div class="medsos-ytb"><i class="fa-brands fa-youtube"></i></div>
+                        </a>
+                    </div>
+                </div>
                 <div class="text-center mb-3">
                     <img class="img-fluid img-det-news" src="/img/news/news1.jpg" alt="">
                 </div>
