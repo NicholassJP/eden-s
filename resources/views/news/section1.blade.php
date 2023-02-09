@@ -17,27 +17,28 @@
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <div class="row" id="paginate">
-                    @for ($i = 1; $i <= 12; $i++) <div class="test-group col-lg-4">
-                        <a href="/detail_news">
+                    @foreach($tampil_news as $value)
+                    <div class="test-group col-lg-4">
+                        <a class="no-decoration" href="/detail_news">
                             <div class="mb-4">
-                                <div class="wrapper-img">
-                                    <img class="news-img img-fluid" src="/img/news/news2.jpg" alt="">
+                                <div class="card-section1 d-flex align-bottom text-left responsive-text">
+                                    <h1 class="m-0 absolute-left">{{$value['title']}}</h1>
                                 </div>
                             </div>
                         </a>
+                    </div>
+                    @endforeach
                 </div>
-                @endfor
+                <nav aria-label="...">
+                    <ul class="pagination justify-content-center align-items-center gap-1 mt-4">
+                        <li id="previous-page" class="mt-03">
+                            <a href="javascript:void(0)" aria-label="Previous"><i class="fas fa-arrow-left mt-3px"></i></i></a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <nav aria-label="...">
-                <ul class="pagination justify-content-center align-items-center gap-1 mt-4">
-                    <li id="previous-page" class="mt-03">
-                        <a href="javascript:void(0)" aria-label="Previous"><i class="fas fa-arrow-left mt-3px"></i></i></a>
-                    </li>
-                </ul>
-            </nav>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
         </div>
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
-</div>
-</section>
+    </section>
 </div>

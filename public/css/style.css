@@ -431,6 +431,19 @@ html{
     background-size: cover;
     width: 100%;
 }
+
+  .card-section1{
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.8) 8.1%, rgba(0, 0, 0, 0.8) 15.78%, rgba(255, 255, 255, 0) 100%), url("/img/news/news2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 12px;
+    border-radius: 12px;
+  }
+  .align-bottom{
+    align-items: end;
+  }
 .nav-news .nav-link.active, .nav-news .show>.nav-link
 {
     padding: 6px 24px;
@@ -481,6 +494,50 @@ html{
 @media (max-width: 992px) {
     .desktop-none{
         display: block;
+    }
+    .br1{
+        border-right: 0 !important;
+    }
+    .responsive-text p{
+        font-size: 13px;
+    }
+    .responsive-text h1{
+        font-size: 24px;
+    }
+    .responsive-text h4{
+        font-size: 18px;
+    }
+    .responsive-text h5{
+        font-size: 16px;
+    }
+    .text-card{
+        padding: 1rem 0.5rem;
+    }
+    .ser-card-section1{
+        padding: 15px;
+    }
+    .ser-card-section1 img{
+        height: 120px;
+    }
+    .expertise-img{
+        height: 150px;
+    }
+    .prl-75{
+        padding-right: 7.5px;
+        padding-left: 7.5px;
+    }
+    .card-section5{
+        width: 100%;
+        height: 250px;
+        background-position: center;
+    }
+    .responsive-0{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    #cont-section-1{
+        padding-top: 45px;
+        padding-bottom: 45px;
     }
     .mobile-none{
         display: none;
@@ -549,6 +606,7 @@ html{
   .container-xl {
     max-width: 960px;
   }
+  
   }
   
   @media (min-width: 1200px){

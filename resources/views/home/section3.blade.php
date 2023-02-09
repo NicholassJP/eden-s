@@ -7,14 +7,14 @@
                     @foreach($tampil_home['expertise'] as $value)
                     <div class="col-6 mt-4">
                         <a class="no-decoration" href="/service_product">
-                            <div class="card-section justify-content-center">
+                            <div class="card-section justify-content-center responsive-text">
                                 <div class="wrapper-img1">
                                     <img class="expertise-img img-fluid" src="/img/section3/bg1.png" alt="">
                                 </div>
                                 <h1 class="m-0 absolute-center">{{$value['title']}}</h1>
                             </div>
                         </a>
-                    </div>  
+                    </div>
                     @endforeach
                 </div>
             </div>
