@@ -45,6 +45,12 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\API'], func
     Route::delete('deleteproduct', 'ProductController@deleteProduct');
     Route::put('updateproduct', 'ProductController@updateProduct');
 
+    //Product Image
+    Route::get('getproductimage', 'ProductController@getProductImage');
+    Route::post('insertproductimage', 'ProductController@insertProductImage');
+    Route::delete('deleteproductimage', 'ProductController@deleteProductImage');
+    Route::put('updateproductimage', 'ProductController@updateProductImage');
+
     //Category
     Route::get('getcategory', 'CategoryController@getCategory');
     Route::post('insertcategory', 'CategoryController@insertCategory');

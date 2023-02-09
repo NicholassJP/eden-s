@@ -62,7 +62,7 @@ class PersonController extends Controller
             if (request()->hasFile('img')) {
                 $file = request()->file('img');
                 $location = 'person_img';
-                $filename = $file->getClientOriginalName();
+                $filename = rand(1, 99) . $file->getClientOriginalName();
                 $file->move($location, $filename);
                 $img_url = $URL . '/' . $location . '/' . $filename;
             };
@@ -108,7 +108,7 @@ class PersonController extends Controller
                 $file = request()->file('img');
                 unset($allData['img']);
                 $location = 'person_img';
-                $filename = $file->getClientOriginalName();
+                $filename = rand(1, 99) . $file->getClientOriginalName();
                 $file->move($location, $filename);
                 $url_file_name = $URL . '/' . $location . '/' .  $filename;
                 $string = $string . 'img' . "='" . $url_file_name . "',";

@@ -56,7 +56,7 @@ class ProductController extends Controller
             if (request()->hasFile('img')) {
                 $file = request()->file('img');
                 $location = 'product_img';
-                $filename = $file->getClientOriginalName();
+                $filename = rand(1, 99) . $file->getClientOriginalName();
                 $file->move($location, $filename);
                 $img_url = $URL . '/' . $location . '/' . $filename;
             };
@@ -102,7 +102,7 @@ class ProductController extends Controller
                 $file = request()->file('img');
                 unset($allData['img']);
                 $location = 'product_img';
-                $filename = $file->getClientOriginalName();
+                $filename = rand(1, 99) . $file->getClientOriginalName();
                 $file->move($location, $filename);
                 $url_file_name = $URL . '/' . $location . '/' .  $filename;
                 $string = $string . 'img' . "='" . $url_file_name . "',";
@@ -143,6 +143,157 @@ class ProductController extends Controller
             $id = request('id');
 
             DB::select("delete from product
+            where id = " . $id);
+
+            return [
+                'data' => [],
+                'meta' => [
+                    'status' => $status,
+                    'message' => $msg
+                ],
+            ];
+        } catch (\Exception $e) {
+            return [
+                'data' => [],
+                'meta' => [
+                    'status' => false,
+                    'message' => 'Terjadi kesalahan'
+                ],
+            ];
+        }
+    }
+
+    public function getProductImage()
+    {
+        try {
+            $status = true;
+            $msg = 'berhasil mengambil data';
+            $product_id = request('product_id');
+            $data = DB::select("SELECT * FROM `product_image` where product_id like '%" . $product_id . "%'");
+            $array = json_decode(json_encode($data), true);
+
+            return [
+                'data' => $array,
+                'meta' => [
+                    'status' => $status,
+                    'message' => $msg
+                ],
+            ];
+        } catch (\Exception $e) {
+            return [
+                'data' => [],
+                'meta' => [
+                    'status' => false,
+                    'message' => 'Terjadi kesalahan'
+                ],
+            ];
+        }
+    }
+
+    public function insertProductImage()
+    {
+        try {
+            $status = true;
+            $msg = 'berhasil menambah data';
+
+            request()->validate([
+                'product_id' => 'required',
+                'img' => 'required'
+            ]);
+
+            $URL = config('app.url');
+            $product_id = request('product_id');
+
+            if (request()->hasFile('img')) {
+                $file = request()->file('img');
+                $location = 'product_img';
+                $filename = rand(1, 99) . $file->getClientOriginalName();
+                $file->move($location, $filename);
+                $img_url = $URL . '/' . $location . '/' . $filename;
+            };
+
+            DB::insert("insert into product_image
+            (product_id, img)
+            values (?, ?)", [$product_id, $img_url]);
+
+            return [
+                'data' => [],
+                'meta' => [
+                    'status' => $status,
+                    'message' => $msg
+                ],
+            ];
+        } catch (\Exception $e) {
+            return [
+                'data' => [],
+                'meta' => [
+                    'status' => false,
+                    'message' => 'Terjadi kesalahan'
+                ],
+            ];
+        }
+    }
+
+    public function updateProductImage()
+    {
+        try {
+            $status = true;
+            $msg = 'berhasil mengubah data';
+
+            request()->validate([
+                'id' => 'required'
+            ]);
+            $URL = config('app.url');
+            $id = request('id');
+            $allData = request()->all();
+            unset($allData['_method']);
+            unset($allData['id']);
+            $string = '';
+            if (request()->hasFile('img')) {
+                $file = request()->file('img');
+                unset($allData['img']);
+                $location = 'product_img';
+                $filename = rand(1, 99) . $file->getClientOriginalName();
+                $file->move($location, $filename);
+                $url_file_name = $URL . '/' . $location . '/' .  $filename;
+                $string = $string . 'img' . "='" . $url_file_name . "',";
+            };
+            foreach ($allData as $key => $value) {
+                $string = $string . $key . "='" . $value . "',";
+            }
+            DB::update("UPDATE `product_image` set " . $string . " updated_at=CURRENT_TIMESTAMP where id = " . $id);
+
+            return [
+                'data' => [],
+                'meta' => [
+                    'status' => $status,
+                    'message' => $msg
+                ],
+            ];
+        } catch (\Exception $e) {
+            return [
+                'data' => [],
+                'meta' => [
+                    'status' => false,
+                    'message' => 'Terjadi kesalahan'
+                ],
+            ];
+        }
+    }
+
+    public function deleteProductImage()
+    {
+        try {
+            request()->validate([
+                'id' => 'required'
+            ]);
+
+            $status = true;
+            $msg = 'berhasil menghapus data';
+
+            $id = request('id');
+
+            DB::select("delete from product_image
             where id = " . $id);
 
             return [

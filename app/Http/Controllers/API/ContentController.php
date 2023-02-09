@@ -64,7 +64,7 @@ class ContentController extends Controller
                     $file = $request->file('logo_img');
                     unset($allData['logo_img']);
                     $location = 'img';
-                    $filename = $file->getClientOriginalName();
+                    $filename = rand(1, 99) . $file->getClientOriginalName();
                     $file->move($location, $filename);
                     $url_file_name = $URL . '/' . $location . '/' .  $filename;
                     $string = $string . 'logo_img' . "='" . $url_file_name . "',";
@@ -73,7 +73,7 @@ class ContentController extends Controller
                     $file = $request->file('image1');
                     unset($allData['image1']);
                     $location = 'img';
-                    $filename = $file->getClientOriginalName();
+                    $filename = rand(1, 99) . $file->getClientOriginalName();
                     $file->move($location, $filename);
                     $url_file_name = $URL . '/' . $location . '/' .  $filename;
                     $string = $string . 'image1' . "='" . $url_file_name . "',";
@@ -82,7 +82,7 @@ class ContentController extends Controller
                     $file = $request->file('image2');
                     unset($allData['image2']);
                     $location = 'img';
-                    $filename = $file->getClientOriginalName();
+                    $filename = rand(1, 99) . $file->getClientOriginalName();
                     $file->move($location, $filename);
                     $url_file_name = $URL . '/' . $location . '/' .  $filename;
                     $string = $string . 'image2' . "='" . $url_file_name . "',";
@@ -91,7 +91,7 @@ class ContentController extends Controller
                     $file = $request->file('image3');
                     unset($allData['image3']);
                     $location = 'img';
-                    $filename = $file->getClientOriginalName();
+                    $filename = rand(1, 99) . $file->getClientOriginalName();
                     $file->move($location, $filename);
                     $url_file_name = $URL . '/' . $location . '/' .  $filename;
                     $string = $string . 'image3' . "='" . $url_file_name . "',";
@@ -100,7 +100,7 @@ class ContentController extends Controller
                     $file = $request->file('image4');
                     unset($allData['image4']);
                     $location = 'img';
-                    $filename = $file->getClientOriginalName();
+                    $filename = rand(1, 99) . $file->getClientOriginalName();
                     $file->move($location, $filename);
                     $url_file_name = $URL . '/' . $location . '/' .  $filename;
                     $string = $string . 'image4' . "='" . $url_file_name . "',";
@@ -116,7 +116,7 @@ class ContentController extends Controller
                     $file = $request->file('section2_logo');
                     unset($allData['section2_logo']);
                     $location = 'img';
-                    $filename = $file->getClientOriginalName();
+                    $filename = rand(1, 99) . $file->getClientOriginalName();
                     $file->move($location, $filename);
                     $url_file_name = $URL . '/' . $location . '/' .  $filename;
                     $string = $string . 'section2_logo' . "='" . $url_file_name . "',";
@@ -132,7 +132,7 @@ class ContentController extends Controller
                     $file = $request->file('flow_img');
                     unset($allData['flow_img']);
                     $location = 'img';
-                    $filename = $file->getClientOriginalName();
+                    $filename = rand(1, 99) . $file->getClientOriginalName();
                     $file->move($location, $filename);
                     $url_file_name = $URL . '/' . $location . '/' .  $filename;
                     $string = $string . 'flow_img' . "='" . $url_file_name . "',";
@@ -200,11 +200,15 @@ class ContentController extends Controller
     {
         try {
             $data = json_decode(json_encode(DB::select("SELECT * FROM `content_service_and_product`")[0]), true);
-            $data['all_product'] = json_decode(json_encode(DB::select("select title, description, img from product order by title")), true);
+            $data['all_product'] = json_decode(json_encode(DB::select("select p.title, s.title service_title,p.description, p.img from product p join service s on p.service_id = s.id order by p.title")), true);
             $data['service'] = json_decode(json_encode(DB::select("select id, title, catalogue_check, demo_link_check, catalogue_url from service order by title")), true);
             for ($i = 0; $i < count($data['service']); $i++) {
                 $id = $data['service'][$i]['id'];
-                $data['service'][$i]['product'] = json_decode(json_encode(DB::select("select title, description, img, demo_url from product where service_id=" . $id . " order by title")), true);
+                $data['service'][$i]['product'] = json_decode(json_encode(DB::select("select id, title, description, img, demo_url from product where service_id=" . $id . " order by title")), true);
+                for ($j = 0; $j < count($data['service'][$i]['product']); $j++) {
+                    $id = $data['service'][$i]['product'][$j]['id'];
+                    $data['service'][$i]['product'][$j]['more_image'] = json_decode(json_encode(DB::select("select img from product_image where product_id=" . $id . " order by id")), true);
+                }
             }
 
             return [
@@ -228,11 +232,11 @@ class ContentController extends Controller
     public function getNews()
     {
         try {
-            $data['all_project'] = json_decode(json_encode(DB::select("select title, long_desc, short_desc, img, uniquename from news order by title")), true);
-            $data['our_project'] = json_decode(json_encode(DB::select("select id, title from category order by title")), true);
+            $data['all_project'] = json_decode(json_encode(DB::select("select title,  short_desc, img, uniquename from news ORDER by created_at DESC")), true);
+            $data['our_project'] = json_decode(json_encode(DB::select("select id, title from category ORDER by created_at DESC")), true);
             for ($i = 0; $i < count($data['our_project']); $i++) {
                 $id = $data['our_project'][$i]['id'];
-                $data['our_project'][$i]['project'] = json_decode(json_encode(DB::select("SELECT n.title, n.long_desc, n.short_desc, n.img, n.uniquename FROM `category_and_news` can join news n on n.id=can.news_id  where category_id='" . $id . "' order by n.title")), true);
+                $data['our_project'][$i]['project'] = json_decode(json_encode(DB::select("SELECT n.title, n.short_desc, n.short_desc, n.img, n.uniquename FROM `category_and_news` can join news n on n.id=can.news_id  where category_id='" . $id . "' ORDER by n.created_at DESC")), true);
             }
 
             return [

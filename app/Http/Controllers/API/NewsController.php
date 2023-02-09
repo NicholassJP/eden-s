@@ -40,12 +40,15 @@ class NewsController extends Controller
         try {
             $status = true;
             $msg = 'berhasil mengambil data';
+            request()->validate([
+                'unique' => 'required',
+            ]);
             $unique = request('unique');
-            $data = DB::select("SELECT title, long_desc, img, created_at 'published date' FROM `news` where uniquename='" . $unique . "'");
-            $array = json_decode(json_encode($data), true);
+            $data = json_decode(json_encode(DB::select("SELECT title, long_desc, img, created_at 'published date' FROM `news` where uniquename='" . $unique . "'")[0]), true);
+            $data['more_news'] = json_decode(json_encode(DB::select("SELECT title, short_desc, img, created_at 'published date' FROM `news` ORDER by created_at DESC LIMIT 4")), true);
 
             return [
-                'data' => $array,
+                'data' => $data,
                 'meta' => [
                     'status' => $status,
                     'message' => $msg
@@ -83,13 +86,14 @@ class NewsController extends Controller
             if (request()->hasFile('img')) {
                 $file = request()->file('img');
                 $location = 'news_img';
-                $filename = $file->getClientOriginalName();
+                $filename = rand(1, 99) . $file->getClientOriginalName();
                 $file->move($location, $filename);
                 $img_url = $URL . '/' . $location . '/' . $filename;
             };
 
             $unique = str_replace(" ", "-", $title);
             $unique = preg_replace('/[^A-Za-z0-9\-]/', '', $unique);
+            $unique = $unique . "-" . rand(1, 99);
 
             DB::insert("insert into news
             (title, long_desc, short_desc, img, uniquename)
@@ -132,7 +136,7 @@ class NewsController extends Controller
                 $file = request()->file('img');
                 unset($allData['img']);
                 $location = 'service_img';
-                $filename = $file->getClientOriginalName();
+                $filename = rand(1, 99) . $file->getClientOriginalName();
                 $file->move($location, $filename);
                 $url_file_name = $URL . '/' . $location . '/' .  $filename;
                 $string = $string . 'img' . "='" . $url_file_name . "',";
