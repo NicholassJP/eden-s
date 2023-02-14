@@ -22,7 +22,7 @@
                         <a class="no-decoration" href="/detail_news">
                             <div class="mb-4">
                                 <div class="card-section1 d-flex align-bottom text-left responsive-text">
-                                    <h1 class="m-0 absolute-left">{{$value['title']}}</h1>
+                                    <h3 class="m-0 absolute-left">{{$value['title']}}</h3>
                                 </div>
                             </div>
                         </a>

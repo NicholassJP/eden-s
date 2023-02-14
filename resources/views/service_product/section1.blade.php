@@ -149,9 +149,9 @@
             </ul>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <div class="row">
+                    <div class="row" id="paginate">
                         @foreach($tampil_service_product['all_product'] as $value)
-                        <div class="col-lg-4 col-6 mb-2 prl-75">
+                        <div class="test-group col-lg-4 col-6 mb-2 prl-75">
                             <a class="no-decoration" type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{$value['title']}}{{$value['title']}}{{$value['title']}}">
                                 <div class="ser-card-section1 responsive-text">
                                     <img class="mb-2" src="/img/section3/bg1.png" alt="">
@@ -221,6 +221,13 @@
                         </div>
                         @endforeach
                     </div>
+                    <nav aria-label="...">
+                        <ul class="pagination justify-content-center align-items-center gap-1 mt-4">
+                            <li id="previous-page" class="mt-03">
+                                <a href="javascript:void(0)" aria-label="Previous"><i class="fas fa-arrow-left mt-3px"></i></i></a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
                 @foreach($tampil_service_product['service'] as $value)
                 <div class="tab-pane fade" id="{{$value['title']}}" role="tabpanel" aria-labelledby="{{$value['title']}}-tab">

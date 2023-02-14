@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
+
 html{
     scroll-behavior: smooth;
+}
+body{
+    font-family: 'Nunito', sans-serif;
 }
 /* Navbar */
 .nav-custom{
@@ -311,48 +316,6 @@ html{
 .page-footer a{
     color: white;
 }
-.box-social a{
-    padding: 4px 8px;
-    background-color: black;
-    border-radius: 50%;
-}
-.box-social .loc{
-    padding: 4px 10px;
-}
-.box-social .ytb{
-    padding: 4px 7px;
-}
-.box-social{
-    background-color: white;
-    padding: 6px 24px;
-    border-radius: 4px;
-    width: max-content;
-}
-.medsos-ig{
-    margin-top: 2px;
-}
-.medsos-ig i{
-    font-size: 22px;
-}
-.medsos-loc{
-    margin-top: 2px;
-}
-.medsos-loc i{
-    font-size: 20px;
-}
-.medsos-twit{
-    margin-top: 2px;
-}
-.medsos-twit i{
-    font-size: 20px;
-}
-.medsos-ytb{
-    margin-top: 2px;
-}
-.medsos-ytb i{
-    font-size: 18px;
-}
-
 /* Service & Product */
 /* Section 1 */
 #ser-section-1{
@@ -490,6 +453,9 @@ html{
     height: 150px;
     object-fit: cover;
   }
+  .responsive-text h3{
+    font-size: 24px;
+  }
 /* Tablet */
 @media (max-width: 992px) {
     .desktop-none{
@@ -502,6 +468,9 @@ html{
         font-size: 13px;
     }
     .responsive-text h1{
+        font-size: 24px;
+    }
+    .responsive-text h3{
         font-size: 24px;
     }
     .responsive-text h4{
@@ -644,4 +613,13 @@ html{
   .modal-lg {
     max-width: 100%;
     margin: 15px;
+  }
+
+  .loading-bar {
+    height: 4px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ddd;
   }

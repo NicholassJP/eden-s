@@ -22,19 +22,19 @@
             </div>
             <div class="col-lg-3 mt-0 mt-sm-0">
                 <p>Follow Us</p>
-                <div class="box-social">
-                    <div class="d-flex align-self-end justify-content-center gap-1">
+                <div class="">
+                    <div class="d-flex align-self-end gap-1">
                         <a href="">
-                            <div class="medsos-ig"><i class="fa-brands fa-instagram"></i></div>
+                            <img src="/img/medsos/ig.png">
                         </a>
                         <a class="loc" href="">
-                            <div class="medsos-loc"><i class="fa-solid fa-location-dot"></i></i></div>
+                            <img src="/img/medsos/twit.png">
                         </a>
                         <a class="twit" href="">
-                            <div class="medsos-twit"><i class="fa-brands fa-twitter"></i></div>
+                            <img src="/img/medsos/fb.png">
                         </a>
                         <a class="ytb" href="">
-                            <div class="medsos-ytb"><i class="fa-brands fa-youtube"></i></div>
+                            <img src="/img/medsos/linked.png">
                         </a>
                     </div>
                 </div>
