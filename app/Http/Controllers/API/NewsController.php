@@ -45,7 +45,7 @@ class NewsController extends Controller
             ]);
             $unique = request('unique');
             $data = json_decode(json_encode(DB::select("SELECT title, long_desc, img, created_at 'published date' FROM `news` where uniquename='" . $unique . "'")[0]), true);
-            $data['more_news'] = json_decode(json_encode(DB::select("SELECT title, short_desc, img, created_at 'published date' FROM `news` ORDER by created_at DESC LIMIT 4")), true);
+            $data['more_news'] = json_decode(json_encode(DB::select("SELECT title, short_desc, img, uniquename, created_at 'published date' FROM `news` ORDER by created_at DESC LIMIT 4")), true);
 
             return [
                 'data' => $data,
